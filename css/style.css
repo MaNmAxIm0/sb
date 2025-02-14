@@ -1,0 +1,401 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  margin: 0;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 30px auto;
+  background-color: #fff;
+}
+
+header {
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  color: #333333;
+}
+
+/* Tab Navigation */
+#tab-navigation {
+  margin-bottom: 30px;
+}
+
+#tab-navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+}
+
+#tab-navigation ul li {
+  margin: 0;
+}
+
+/* Tab styling */
+.tab-container {
+  display: inline-flex;
+  align-items: center;
+  padding: 16px 32px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  cursor: move;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.tab-container.active {
+  background-color: #2196F3;
+  color: white;
+  box-shadow: 0 2px 4px rgba(33, 150, 243, 0.2);
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0;
+  color: inherit;
+}
+
+.tab-button:focus {
+  outline: none;
+}
+
+.tab-delete-button {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 12px;
+  padding: 0;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.tab-delete-button:hover {
+  opacity: 1;
+}
+
+/* Plus Button Styling */
+#add-tab-button {
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
+}
+
+#add-tab-button:hover {
+  background-color: #1976D2;
+}
+
+/* Topic styles */
+#topics-container {
+  margin-top: 30px;
+}
+
+.topic {
+  margin-bottom: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.topic-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #f8f9fa;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: #333333;
+}
+
+.topic-header:hover {
+  background-color: #f1f3f4;
+}
+
+.topic-name {
+  font-weight: 500;
+  flex-grow: 1;
+  font-size: 16px;
+  color: #333333;
+}
+
+.topic-name-input {
+  font-size: 16px;
+  padding: 5px 10px;
+  border: 2px solid #2196F3;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.topic-delete-button {
+  background: none;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  padding: 5px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+  font-weight: bold;
+}
+
+.topic-delete-button:hover {
+  opacity: 1;
+}
+
+.topic-content {
+  padding: 20px;
+}
+
+.topic.collapsed .topic-content {
+  display: none;
+}
+
+/* Item List */
+.item-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item-list li {
+  position: relative;
+  padding: 12px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  border-bottom: 1px solid #f0f0f0;
+  color: #333333;
+  min-height: 24px;
+}
+
+.item-list li:last-child {
+  border-bottom: none;
+}
+
+.item-title {
+  margin-right: 15px;
+  font-weight: 500;
+  color: #333333;
+  word-break: break-word; 
+}
+
+/* Styles for the combined link container */
+.item-link-container {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3em;
+}
+
+.item-link {
+  flex-grow: 1;
+  min-width: 100px; 
+  color: #1976D2;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  word-break: break-all;
+}
+
+.item-link:hover {
+  color: #0D47A1;
+}
+
+.item-source {
+  flex-grow: 1;
+  min-width: 100px; 
+  text-decoration: none;
+  transition: color 0.2s ease;
+  word-break: break-all;
+  font-style: italic;
+  color: #555;
+}
+
+.item-source:hover {
+  color: #555;
+}
+
+.item-description {
+  cursor: pointer;
+  color: #424242;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+  min-width: 200px;
+  max-width: 300px;
+  margin-left: 15px;
+}
+
+.item-description:hover .tooltip {
+  display: block;
+}
+
+.item-options {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+  align-items: center;
+}
+
+.item-options button {
+  padding: 5px 10px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: #424242;
+  transition: color 0.2s ease;
+}
+
+.item-options button:hover {
+  color: #1976D2;
+}
+
+.item-options .delete-button {
+  color: #000000;
+  font-weight: bold;
+}
+
+.item-options .delete-button:hover {
+  color: #333333;
+}
+
+.item-list li:has(.item-form) .item-options {
+  display: none;
+}
+
+/* Item Form */
+.item-form {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  position: relative;
+}
+
+.item-form .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-form .form-group:last-of-type {
+  flex-grow: 1;
+  width: auto;
+  margin-right: 50px;
+}
+
+.item-form label {
+  margin-bottom: 8px;
+  color: #424242;
+  font-size: 14px;
+}
+
+.item-form input[type="text"] {
+  width: 20ch;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  transition: border-color 0.2s ease;
+}
+
+.item-form input[type="text"]:focus {
+  border-color: #2196F3;
+  outline: none;
+}
+
+.item-form textarea {
+  width: calc(100% - 50px);
+  height: 38px;
+  resize: vertical;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  transition: border-color 0.2s ease;
+  height: 36px;
+}
+
+.item-form textarea:focus {
+  border-color: #2196F3;
+  outline: none;
+}
+
+#save-item-button, .item-form button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  margin-top: 27px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: background-color 0.2s ease;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+
+#save-item-button:hover, .item-form button:hover {
+  background-color: #388E3C;
+}
+
+#add-topic-button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border: 2px dashed #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #757575;
+  transition: all 0.2s ease;
+}
+
+#add-topic-button:hover {
+  background-color: #f1f3f4;
+  border-color: #2196F3;
+  color: #2196F3;
+}
+
+.sortable-ghost {
+  opacity: 0.4;
+}
+
+.topic .item-form {
+  margin: 10px 0 0 0;
+  border-radius: 4px;
+}
